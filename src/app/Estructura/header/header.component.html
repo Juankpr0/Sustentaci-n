@@ -1,6 +1,6 @@
 <header class="navbar navbar-expand-lg navbar-dark bg-dark shadow px-4 py-3 animate__animated animate__fadeInDown">
     <!-- Logo o título de la aplicación -->
-    <a class="navbar-brand fs-3 fw-bold me-4 title" routerLink="/">TRINITY</a>
+    <a class="navbar-brand fs-3 fw-bold me-4 title" routerLink="/dashboard">TRINITY</a>
   
     <!-- Botón para el menú colapsable en dispositivos pequeños -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"
@@ -13,29 +13,29 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
         <!-- Enlaces de navegación -->
         <li class="nav-item">
-          <a class="nav-link nav-underline" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+          <a class="nav-link nav-underline" routerLink="/home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-underline" routerLink="/stock" routerLinkActive="active">Stock</a>
+          <a class="nav-link nav-underline" routerLink="/stock">Stock</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-underline" routerLink="/categories" routerLinkActive="active">Categorías</a>
+          <a class="nav-link nav-underline" routerLink="/categories">Categorías</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-underline" routerLink="/records" routerLinkActive="active">Registros</a>
+          <a class="nav-link nav-underline" routerLink="/registros">Registros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-underline" routerLink="/users" routerLinkActive="active">Usuarios</a>
+          <a class="nav-link nav-underline" routerLink="/users">Usuarios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-underline" routerLink="/alerts" routerLinkActive="active">Alertas</a>
+          <a class="nav-link nav-underline" routerLink="/alertas">Alertas</a>
         </li>
       </ul>
   
       <!-- Opción para cerrar sesión -->
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link nav-underline text-danger" routerLink="/logout" routerLinkActive="active">Cerrar sesión</a>
+          <a class="nav-link nav-underline text-danger" routerLink="/dashboard" routerLinkActive="active">Cerrar sesión</a>
         </li>
       </ul>
     </div>

@@ -20,4 +20,9 @@
   .list-group-item:last-child {
     border-bottom: none;
   }
+
+  h2 {
+    color: white;
+    text-transform: uppercase;
+  }
   

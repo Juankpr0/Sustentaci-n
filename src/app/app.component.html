@@ -1,59 +1,7 @@
-
-<a routerLink='/'>
-  <header>
-    <header class="navbar navbar-expand-lg navbar-dark bg-dark shadow px-4 py-3 animate__animated animate__fadeInDown">
-      <!-- Logo o título de la aplicación -->
-      <a class="navbar-brand fs-3 fw-bold me-4 title" routerLink="/">TRINITY</a>
-    
-      <!-- Botón para el menú colapsable en dispositivos pequeños -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"
-        aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-      <!-- Contenido del menú -->
-      <div class="collapse navbar-collapse" id="navContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
-          <!-- Enlaces de navegación -->
-          <li class="nav-item">
-            <a class="nav-link nav-underline" routerLink="/home" routerLinkActive="active">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-underline" routerLink="/stock" routerLinkActive="active">Stock</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-underline" routerLink="/categories" routerLinkActive="active">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-underline" routerLink="/registros" routerLinkActive="active">Registros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-underline" routerLink="/users" routerLinkActive="active">Usuarios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-underline" routerLink="/alertas" routerLinkActive="active">Alertas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-underline" routerLink="/otros" routerLinkActive="active">Otros</a>
-          </li>
-        </ul>
-    
-        <!-- Opción para cerrar sesión -->
-        <ul class="navbar-nav mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link nav-underline text-danger" routerLink="/logout" routerLinkActive="active">Cerrar sesión</a>
-          </li>
-        </ul>
-      </div>
-    </header>
-    
-  </header>
-</a>
+<app-header></app-header>
 
 <section class="content">
   <router-outlet></router-outlet>
-
-  <div class="footer">
-    © 2025 TRINITY - [Todos los derechos reservados.]
-  </div>
 </section>
+
+<app-footer></app-footer>
