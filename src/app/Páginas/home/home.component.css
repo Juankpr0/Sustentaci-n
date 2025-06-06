@@ -85,3 +85,6 @@ main {
     height: 310px;
   }
   
+  a {
+    text-decoration: none;
+  }

@@ -7,9 +7,11 @@
         <input type="text" class="form-control barra" placeholder="🔍 Buscar producto..." style="width: 1000px;">
       </div>
       <div class="col-md-4 text-end">
-        <button class="btn btn-info text-white fw-bold addP">
+        <a routerLink="/registros">
+          <button class="btn btn-info text-white fw-bold addP">
           ➕ Agregar nuevo producto
         </button>
+        </a>
       </div>
     </div>
   
@@ -17,40 +19,50 @@
     <div class="row g-4 justify-content-center">
       <!-- Accesorios -->
       <div class="col-12 col-sm-6 col-lg-3">
+        <a routerLink="/productos">
         <div class="p-3 border rounded bg-dark text-center card-option">
           <h3 class="h5 mb-3">Accesorios</h3>
           <img src="/accesorios.jfif" class="img-fluid" alt="Accesorios">
           <p class="mt-2">Total: <strong>120</strong></p>
         </div>
+        </a>
       </div>
   
-      <!-- Dispositivos móviles -->
+      
       <div class="col-12 col-sm-6 col-lg-3">
+        <a routerLink="/productos">
         <div class="p-3 border rounded bg-dark text-center card-option">
           <h3 class="h5 mb-3">Dispositivos móviles</h3>
           <img src="/iphone.png" class="img-fluid" alt="Móviles">
           <p class="mt-2">Total: <strong>85</strong></p>
         </div>
+        </a>
       </div>
   
       <!-- Dispositivos de cómputo -->
       <div class="col-12 col-sm-6 col-lg-3">
+        <a routerLink="/productos">
         <div class="p-3 border rounded bg-dark text-center card-option">
           <h3 class="h5 mb-3">Dispositivos de cómputo</h3>
           <img src="dComputo.png" class="img-fluid" alt="Cómputo">
           <p class="mt-2">Total: <strong>67</strong></p>
         </div>
+        </a>
       </div>
   
       <!-- Componentes -->
       <div class="col-12 col-sm-6 col-lg-3">
+        <a routerLink="/productos">
         <div class="p-3 border rounded bg-dark text-center card-option">
           <h3 class="h5 mb-3">Componentes</h3>
           <img src="/componentes.jfif" class="img-fluid" alt="Componentes">
           <p class="mt-2">Total: <strong>94</strong></p>
         </div>
+        </a>
       </div>
     </div>
+
+    
   
     <!-- Tabla resumen -->
     <div class="mt-5">

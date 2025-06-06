@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./Estructura/header/header.component";
 import { FooterComponent } from './Estructura/footer/footer.component';
-import { HomeComponent } from "./P\u00E1ginas/home/home.component";
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterModule, HeaderComponent, FooterComponent],
+  standalone: true,
+  imports: [
+    HeaderComponent,
+    FooterComponent,
+    HttpClientModule,
+    RouterModule
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'Trinity';
 }
-
