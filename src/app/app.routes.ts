@@ -14,20 +14,19 @@ import { LoginComponent } from './Páginas/login/login.component';
 import { RegistroComponent } from './Páginas/registro/registro.component';
 
 export const routes: Routes = [
-    { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-    { path: 'categories', component: HomeComponent, canActivate: [AuthGuard] },
-    { path: 'stock', component: StockComponent, canActivate: [AuthGuard] },
-    { path: 'registros', component: RegistrosComponent, canActivate: [AuthGuard] },
-    { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
-    { path: 'alertas', component: AlertasComponent, canActivate: [AuthGuard] },
-    { path: 'detalles', component: DetallesComponent, canActivate: [AuthGuard] },
-    { path: 'otros', component: OtrosComponent, canActivate: [AuthGuard] },
-    { path: 'productos', component: ProductsComponent, canActivate: [AuthGuard] },
-    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+    { path: 'home', component: HomeComponent, canActivate: [] },
+    { path: 'categories', component: HomeComponent, canActivate: [] },
+    { path: 'stock', component: StockComponent, canActivate: [] },
+    { path: 'registros', component: RegistrosComponent, canActivate: [] },
+    { path: 'users', component: UsersComponent, canActivate: [] },
+    { path: 'alertas', component: AlertasComponent, canActivate: [] },
+    { path: 'detalles', component: DetallesComponent, canActivate: [] },
+    { path: 'otros', component: OtrosComponent, canActivate: [] },
+    { path: 'productos', component: ProductsComponent, canActivate: [] },
+    { path: 'dashboard', component: DashboardComponent, canActivate: [] },
     { path: 'login', component: LoginComponent },
     { path: 'registro', component: RegistroComponent },
     { path: '**', component: NoFoundComponent }
 ];
 
-// Exporta el provider standalone para rutas
 export const AppRoutingModule = provideRouter(routes);

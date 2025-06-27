@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "./Estructura/header/header.component";
 import { FooterComponent } from './Estructura/footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientXsrfModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -10,8 +10,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     HeaderComponent,
     FooterComponent,
-    HttpClientModule,
-    RouterModule
+    RouterModule,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

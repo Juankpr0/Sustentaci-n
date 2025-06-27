@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AxiosService } from '../../services/axios.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',

@@ -1,90 +1,167 @@
-main {
-    background-color: #212529;
-  }
-  
-  /* Estilo para imágenes dentro de tarjetas */
-  .img-fluid {
-    opacity: 1;
-    border-radius: 10px;
-    max-height: 500px;
-    object-fit: cover;
-    box-shadow: 0 4px 15px cyan;
-  }
-  
-  /* Títulos */
-  h2, h3 {
-    color: white;
-    text-transform: uppercase;
-  }
-  
-  /* Tarjetas de opciones */
-  .card-option {
-    background-color: #212529;
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-    height: 400px;
-    max-height: 400px;
-    box-shadow: 0 4px 15px purple;
-  }
-  
-  .card-option:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px purple;
-  }
-  
-  /* Sección de gráficas */
-  .chart-card {
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
-    background-color: #f1f3f5;
-    box-shadow: 0 4px 15px purple;
-    margin-top: 10px;
-  }
-  
-  .chart-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 15px purple;
-  }
-  
-  .chart-card h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: white;
-  }
-  
-  /* Imágenes dentro de las tarjetas */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body, main, .navbar, .card-option, .chart-card, .alert {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+.navbar {
+  background: #0A0A0A !important;
+  color: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 24px rgba(75,0,130,0.15);
+}
+
+.navbar-brand.title {
+  color: #fff !important;
+  letter-spacing: 2px;
+  font-size: 2rem;
+  font-weight: 600;
+  transition: color 0.3s;
+  text-transform: uppercase;
+}
+
+.navbar-brand.title:hover {
+  color: #A259FF !important;
+}
+
+.nav-link {
+  font-size: 15px;
+  color: #fff !important;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: color 0.2s, background 0.2s;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.nav-link.nav-underline {
+  border-bottom: 2px solid transparent;
+}
+
+.nav-link.nav-underline:hover,
+.nav-link.active {
+  color: #A259FF !important;
+  background: rgba(162, 89, 255, 0.08);
+  border-bottom: 2px solid #A259FF;
+}
+
+.nav-link.text-danger {
+  color: #A259FF !important;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s, border-bottom 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-link.text-danger:hover {
+  background: rgba(162, 89, 255, 0.08);
+  color: #4B0082 !important;
+  border-bottom: 2px solid #4B0082;
+}
+
+.card-option {
+  background: #18122B;
+  border: 2px solid;
+  border-image: linear-gradient(135deg, #4B0082, #A259FF) 1;
+  box-shadow: 0 4px 15px rgba(75,0,130,0.4);
+  transition: transform 0.2s, box-shadow 0.3s, border-color 0.3s;
+  height: 600px;
+  max-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.card-option:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 32px #A259FF;
+  border-color: #A259FF;
+  z-index: 2;
+}
+
+.card-option h2 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.card-option img {
+  max-height: 500px;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(75,0,130,0.15);
+}
+
+.card-option .icon {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  opacity: 0.85;
+}
+
+.chart-card {
+  background: rgba(24,18,43,0.7);
+  box-shadow: 0 4px 15px #A259FF;
+  margin-top: 10px;
+  border: 1.5px solid #A259FF;
+  transition: transform 0.2s, box-shadow 0.3s;
+  border-radius: 1rem;
+}
+
+.chart-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 8px 24px #4B0082;
+}
+
+.chart-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.chart-card img {
+  max-height: 180px;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 576px) {
   .card-option img,
   .chart-card img {
-    max-height: 350px;
-    object-fit: cover;
-    border-radius: 0.5rem;
+    max-height: 100px;
+    height: 100px;
   }
-  
-  /* Responsivo en pantallas pequeñas */
-  @media (max-width: 576px) {
-    .card-option img,
-    .chart-card img {
-      max-height: 120px;
-    }
+  .card-option {
+    height: 220px;
+    max-height: 220px;
   }
-  
-  /* Alerta personalizada */
-  .alert {
-    background-color: #212529;
-    text-align: center;
-    color: white;
-    margin-top: 10px;
-    box-shadow: 0 4px 15px purple;
-    text-transform: uppercase;
-  }
-  
-  .bg-light {
-    background-color: transparent !important;
-  }
-  
-  .img-fluid {
-    max-width: 100%;
-    height: 310px;
-  }
-  
-  a {
-    text-decoration: none;
-  }
+}
+
+.alert {
+  background: rgba(0,0,0,0.6);
+  text-align: center;
+  color: #fff;
+  margin-top: 18px;
+  box-shadow: 0 4px 15px #A259FF;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  border: none;
+  padding: 1.5rem 2rem;
+  font-size: 1rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.bg-light {
+  background: rgba(241,243,245,0.05) !important;
+}
+
+a {
+  text-decoration: none;
+}

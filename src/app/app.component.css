@@ -1,7 +1,6 @@
 /* Animación suave al entrar */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 
-/* Subrayado animado en hover */
 .nav-underline {
   position: relative;
   transition: color 0.3s ease;
@@ -14,9 +13,9 @@
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: purple;
+  background-color: red;
   transition: width 0.3s ease;
-  box-shadow: 0 4px 15px purple;
+  box-shadow: 0 4px 15px red;
 }
 
 .nav-underline:hover::after {
@@ -25,12 +24,12 @@
 
 /* Opcional: título con efecto al pasar el mouse */
 .tittle {
-  color: purple !important;
+  color: red !important;
   transition: color 0.3s ease;
 }
 
 .footer {
-  background-color: #212529;
+  background-color: red;
   padding: 25px;
   text-align: center;
   font-size: 14px;

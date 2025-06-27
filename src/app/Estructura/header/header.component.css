@@ -1,29 +1,46 @@
-/* Animación suave al entrar */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
-
-/* Subrayado animado en hover */
-.nav-underline {
-  position: relative;
-  transition: color 0.3s ease;
+.navbar-brand.title {
+  letter-spacing: 2px;
+  font-size: 2rem;
+  color: white;
+  transition: color 0.3s;
 }
-
-.nav-underline::after {
-  content: "";
-  width: 0%;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: purple;
-  transition: width 0.3s ease;
-  box-shadow: 0 4px 15px purple;
+.navbar-brand.title:hover {
+  color: #A259FF !important;
 }
-
-.nav-underline:hover::after {
-  width: 100%;
+.nav-link {
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s, background 0.2s;
+  border-radius: 0.25rem;
 }
-
-/* Opcional: título con efecto al pasar el mouse */
-.tittle {
-  color: purple !important;
-  transition: color 0.3s ease;
+.nav-link.nav-underline {
+  border-bottom: 2px solid transparent;
 }
+.nav-link.nav-underline:hover,
+.nav-link.active {
+  color: #A259FF !important;
+  background: rgba(255, 191, 0, 0.1);
+  border-bottom: 2px solid #A259FF
+}
+.nav-link.text-danger {
+  font-weight: bold;
+  transition: background 0.2s, color 0.2s;
+  font-size: 15px;;
+  white-space: nowrap;
+  
+}
+.nav-link.text-danger:hover {
+  background: rgba(220, 53, 69, 0.1);
+  color: A259FF!important;
+  border-bottom: 1px solid #A259FF;
+}
+.navbar {
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 24px rgba(255, 255, 255, 0.15);
+}
+@media (min-width: 992px) {
+  .navbar-nav.mx-auto {
+    justify-content: center;
+    width: 100%;
+    display: flex;}
+  }
