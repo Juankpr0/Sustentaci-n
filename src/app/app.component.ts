@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from "./Estructura/header/header.component";
 import { FooterComponent } from './Estructura/footer/footer.component';
-import { HttpClientXsrfModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     FooterComponent,
     RouterModule,
+    HttpClientModule
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

@@ -8,7 +8,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(), // ✅ agrega esto aquí también
+    provideHttpClient(), 
     provideClientHydration(withEventReplay())
   ]
 };

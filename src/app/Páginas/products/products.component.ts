@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AxiosService } from '../../services/axios.service';
 import { CategoryService } from '../../services/category.service';
 import { FormsModule } from '@angular/forms';
@@ -9,8 +9,8 @@ import { NgFor, NgIf } from '@angular/common';
   selector: 'app-products',
   standalone: true,
   templateUrl: './products.component.html',
-  imports: [FormsModule, RouterModule, NgIf, NgFor],
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
+  imports: [FormsModule, RouterModule, NgIf, NgFor]
 })
 export class ProductsComponent implements OnInit {
   productos: any[] = [];
@@ -19,6 +19,7 @@ export class ProductsComponent implements OnInit {
   nombre = '';
   categoriaId: number | null = null;
   cantidad: number | null = null;
+  imagenUrl = ''; // ✅ Añadido campo de imagen
 
   mensajeExito = '';
   mensajeError = '';
@@ -33,18 +34,18 @@ export class ProductsComponent implements OnInit {
     this.cargarCategorias();
   }
 
-  async cargarCategorias() {
-  this.categoryService.obtenerCategorias().subscribe({
-    next: (data) => {
-      this.categorias = data;
-    },
-    error: (error) => {
-      console.error('Error al cargar categorías:', error);
-    }
-  });
-}
+  cargarCategorias(): void {
+    this.categoryService.obtenerCategorias().subscribe({
+      next: (data) => {
+        this.categorias = data;
+      },
+      error: (error) => {
+        console.error('Error al cargar categorías:', error);
+      }
+    });
+  }
 
-  async obtenerProductos() {
+  async obtenerProductos(): Promise<void> {
     try {
       this.productos = await this.axiosService.obtenerProductos();
     } catch (error) {
@@ -53,7 +54,7 @@ export class ProductsComponent implements OnInit {
     }
   }
 
-  async agregarProducto() {
+  async agregarProducto(): Promise<void> {
     this.mensajeExito = '';
     this.mensajeError = '';
 
@@ -65,29 +66,32 @@ export class ProductsComponent implements OnInit {
     const nuevoProducto = {
       name: this.nombre,
       quantity: this.cantidad,
-      category_id: this.categoriaId
+      category_id: this.categoriaId,
+      imageUrl: this.imagenUrl || null
     };
 
     try {
-      const resultado = await this.axiosService.crearProducto(nuevoProducto);
+      await this.axiosService.crearProducto(nuevoProducto);
       this.mensajeExito = '¡Producto agregado exitosamente!';
       this.obtenerProductos();
+
+      // Reiniciar formulario
       this.nombre = '';
       this.categoriaId = null;
       this.cantidad = null;
+      this.imagenUrl = '';
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error al agregar producto:', error);
       this.mensajeError = 'Error al agregar el producto.';
     }
   }
 
   getNombreCategoria(id: number | string): string {
-  const cat = this.categorias.find(c => c.id == id);
-  return cat ? cat.name : 'Sin nombre';
-}
+    const cat = this.categorias.find(c => c.id == id);
+    return cat ? cat.name : 'Sin nombre';
+  }
 
-
-  async removerProducto(producto: any) {
+  async removerProducto(producto: any): Promise<void> {
     try {
       await this.axiosService.eliminarProducto(producto.id);
       this.obtenerProductos();

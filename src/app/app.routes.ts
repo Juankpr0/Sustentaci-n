@@ -12,10 +12,13 @@ import { ProductsComponent } from './Páginas/products/products.component';
 import { DashboardComponent } from './Páginas/dashboard/dashboard.component';
 import { LoginComponent } from './Páginas/login/login.component';
 import { RegistroComponent } from './Páginas/registro/registro.component';
+import { CategoriesComponent } from './Páginas/categories/categories.component';
+import { ProductosPorCategoriaComponent } from './paginas/productos-categoria/productos-categoria.component';
+
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent, canActivate: [] },
-    { path: 'categories', component: HomeComponent, canActivate: [] },
+    { path: 'categories', component: CategoriesComponent, canActivate: [] },
     { path: 'stock', component: StockComponent, canActivate: [] },
     { path: 'registros', component: RegistrosComponent, canActivate: [] },
     { path: 'users', component: UsersComponent, canActivate: [] },
@@ -26,6 +29,7 @@ export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent, canActivate: [] },
     { path: 'login', component: LoginComponent },
     { path: 'registro', component: RegistroComponent },
+    { path: 'productos/categoria/:id', component: ProductosPorCategoriaComponent, canActivate: [] },
     { path: '**', component: NoFoundComponent }
 ];
 

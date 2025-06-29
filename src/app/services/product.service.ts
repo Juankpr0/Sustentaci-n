@@ -8,6 +8,7 @@ export interface Product {
   name: string;
   quantity: number;
   category_id: number;
+  imageUrl?: string;
 }
 
 @Injectable({
