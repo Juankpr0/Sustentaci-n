@@ -19,10 +19,12 @@ export class ProductsComponent implements OnInit {
   nombre = '';
   categoriaId: number | null = null;
   cantidad: number | null = null;
-  imagenUrl = ''; // ✅ Añadido campo de imagen
+  imagenUrl = '';
 
   mensajeExito = '';
   mensajeError = '';
+
+  productoEditando: any = null;
 
   constructor(
     private axiosService: AxiosService,
@@ -41,6 +43,7 @@ export class ProductsComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error al cargar categorías:', error);
+        this.mensajeError = 'Error al cargar las categorías.';
       }
     });
   }
@@ -55,6 +58,8 @@ export class ProductsComponent implements OnInit {
   }
 
   async agregarProducto(): Promise<void> {
+    if (this.productoEditando) return;
+
     this.mensajeExito = '';
     this.mensajeError = '';
 
@@ -73,17 +78,62 @@ export class ProductsComponent implements OnInit {
     try {
       await this.axiosService.crearProducto(nuevoProducto);
       this.mensajeExito = '¡Producto agregado exitosamente!';
-      this.obtenerProductos();
-
-      // Reiniciar formulario
-      this.nombre = '';
-      this.categoriaId = null;
-      this.cantidad = null;
-      this.imagenUrl = '';
+      await this.obtenerProductos();
+      this.resetFormulario();
     } catch (error) {
       console.error('Error al agregar producto:', error);
       this.mensajeError = 'Error al agregar el producto.';
     }
+  }
+
+  async actualizarProducto(): Promise<void> {
+    this.mensajeExito = '';
+    this.mensajeError = '';
+
+    if (!this.nombre || this.categoriaId == null || this.cantidad == null) {
+      this.mensajeError = 'Completa todos los campos.';
+      return;
+    }
+
+    const productoActualizado = {
+      name: this.nombre,
+      quantity: this.cantidad,
+      category_id: this.categoriaId,
+      imageUrl: this.imagenUrl || null
+    };
+
+    try {
+      await this.axiosService.actualizarProducto(this.productoEditando.id, productoActualizado);
+      this.mensajeExito = '¡Producto actualizado exitosamente!';
+      await this.obtenerProductos();
+      this.resetFormulario();
+    } catch (error) {
+      console.error('Error al actualizar producto:', error);
+      this.mensajeError = 'Error al actualizar el producto.';
+    }
+  }
+
+  cargarProducto(producto: any): void {
+    this.productoEditando = producto;
+    this.nombre = producto.name;
+    this.categoriaId = producto.category_id;
+    this.cantidad = producto.quantity;
+    this.imagenUrl = producto.imageUrl || '';
+    this.mensajeError = '';
+    this.mensajeExito = '';
+  }
+
+  cancelarEdicion(): void {
+    this.resetFormulario();
+    this.mensajeExito = 'Edición cancelada.';
+  }
+
+  resetFormulario(): void {
+    this.nombre = '';
+    this.categoriaId = null;
+    this.cantidad = null;
+    this.imagenUrl = '';
+    this.productoEditando = null;
   }
 
   getNombreCategoria(id: number | string): string {
@@ -94,7 +144,7 @@ export class ProductsComponent implements OnInit {
   async removerProducto(producto: any): Promise<void> {
     try {
       await this.axiosService.eliminarProducto(producto.id);
-      this.obtenerProductos();
+      await this.obtenerProductos();
     } catch (error) {
       console.error('Error al eliminar producto:', error);
       this.mensajeError = 'Error al eliminar el producto.';

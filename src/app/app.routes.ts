@@ -18,7 +18,7 @@ import { ProductosPorCategoriaComponent } from './paginas/productos-categoria/pr
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent, canActivate: [] },
-    { path: 'categories', component: CategoriesComponent, canActivate: [] },
+    //{ path: 'categories', component: CategoriesComponent, canActivate: [] },
     { path: 'stock', component: StockComponent, canActivate: [] },
     { path: 'registros', component: RegistrosComponent, canActivate: [] },
     { path: 'users', component: UsersComponent, canActivate: [] },

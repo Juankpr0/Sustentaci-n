@@ -1,5 +1,5 @@
 <!-- FORMULARIO -->
-<form class="row g-3 mb-4" (ngSubmit)="agregarProducto()">
+<form class="row g-3 mb-4" (ngSubmit)="productoEditando ? actualizarProducto() : agregarProducto()">
   <!-- Nombre del producto -->
   <div class="col-md-4">
     <input
@@ -54,7 +54,10 @@
   <!-- Botón -->
   <div class="col-md-12 text-end">
     <button type="submit" class="btn btn-primary">
-      Agregar producto
+      {{ productoEditando ? 'Actualizar producto' : 'Agregar producto' }}
+    </button>
+    <button *ngIf="productoEditando" type="button" class="btn btn-secondary ms-2" (click)="cancelarEdicion()">
+      Cancelar
     </button>
   </div>
 </form>
@@ -92,8 +95,8 @@
     </div>
 
     <div class="mt-2 mt-md-0">
-      <button class="btn btn-success btn-sm me-2" [routerLink]="['/registros']">
-        Agregar
+      <button class="btn btn-success btn-sm me-2" (click)="cargarProducto(producto)">
+        Editar
       </button>
       <button class="btn btn-danger btn-sm" (click)="removerProducto(producto)">
         Remover

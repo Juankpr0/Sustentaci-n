@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
-
 @Component({
   selector: 'app-stock',
   standalone: true,
@@ -19,9 +18,11 @@ export class CategoriesComponent implements OnInit {
   productos: any;
   categorias: any;
 
-  // Propiedades para el formulario de nueva categoría
+  // Nuevas propiedades para el formulario
   nombreCategoria: string = '';
   descripcionCategoria: string = '';
+  imagenCategoria: string = '';
+
   mensajeExitoCategoria: string = '';
   mensajeErrorCategoria: string = '';
 
@@ -65,7 +66,8 @@ export class CategoriesComponent implements OnInit {
 
     const nuevaCategoria = {
       name: this.nombreCategoria,
-      description: this.descripcionCategoria
+      description: this.descripcionCategoria,
+      imageUrl: this.imagenCategoria || null
     };
 
     this.stockService.crearCategoria(nuevaCategoria).subscribe({
@@ -73,6 +75,8 @@ export class CategoriesComponent implements OnInit {
         this.mensajeExitoCategoria = '¡Categoría agregada exitosamente!';
         this.nombreCategoria = '';
         this.descripcionCategoria = '';
+        this.imagenCategoria = '';
+
         this.stockService.getCategorias().subscribe(data => {
           this.categorias = data;
         });

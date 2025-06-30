@@ -3,7 +3,7 @@ h2, h3, p, h4{
     text-transform: uppercase;
   }
   
-  .addP {
+   .addP {
     background-color: cyan;
     box-shadow: 0 5px 10px purple;
     text-transform: uppercase;
