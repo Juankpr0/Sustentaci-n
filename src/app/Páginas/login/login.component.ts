@@ -1,28 +1,30 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [FormsModule, RouterModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  email: string = '';
-  password: string = '';
+  email = '';
+  password = '';
+  mensajeError = '';
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   onLogin() {
-    this.auth.login({ email: this.email, password: this.password }).subscribe({
-      next: () => {
-        this.router.navigate(['/home']);
-      },
+    this.authService.login(this.email, this.password).subscribe({
+      next: (res) => {
+  this.authService.guardarSesion(res.token, res.usuario); // ✅ CORRECTO
+  this.router.navigate(['/dashboard']);
+}
+,
       error: () => {
-        alert('Credenciales incorrectas');
+        this.mensajeError = 'Credenciales inválidas. Intenta de nuevo.';
       }
     });
   }

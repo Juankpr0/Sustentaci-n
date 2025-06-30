@@ -1,14 +1,32 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { HttpClientJsonpModule } from '@angular/common/http';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink],
+  standalone: true,
+  imports: [NgIf, RouterLink],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  nombreUsuario: string = '';
 
+  constructor(private auth: AuthService, private router: Router) {}
+
+  ngOnInit(): void {
+    if (typeof window !== 'undefined') {
+      const usuario = this.auth.obtenerUsuario();
+      this.nombreUsuario = usuario?.nombre || '';
+    }
+  }
+
+  cerrarSesion(): void {
+    this.auth.cerrarSesion();
+  }
+
+  estaAutenticado(): boolean {
+    return this.auth.estaAutenticado();
+  }
 }
