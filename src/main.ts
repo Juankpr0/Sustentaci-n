@@ -8,7 +8,6 @@ bootstrapApplication(AppComponent, {
   ...appConfig,
   providers: [
     ...(appConfig.providers || []),
-    AppRoutingModule,
     provideHttpClient(withFetch())
   ]
 })

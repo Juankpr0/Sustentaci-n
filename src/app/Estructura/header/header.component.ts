@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { NgIf } from '@angular/common';
@@ -10,16 +10,15 @@ import { NgIf } from '@angular/common';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   nombreUsuario: string = '';
 
   constructor(private auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    if (typeof window !== 'undefined') {
-      const usuario = this.auth.obtenerUsuario();
+    this.auth.usuario$.subscribe(usuario => {
       this.nombreUsuario = usuario?.nombre || '';
-    }
+    });
   }
 
   cerrarSesion(): void {

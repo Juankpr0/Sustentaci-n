@@ -2,20 +2,48 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export interface Categoria {
+  id?: number;
+  name: string;
+  description?: string;
+  imageUrl?: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-  private apiUrl = 'http://localhost:3000/api/categories';
+  private readonly apiUrl = 'http://localhost:3000/api/categories';
 
   constructor(private http: HttpClient) {}
 
-  obtenerCategorias(): Observable<any> {
-    return this.http.get(this.apiUrl);
+  // 🟢 Obtener todas las categorías
+  getCategorias(): Observable<Categoria[]> {
+    return this.http.get<Categoria[]>(this.apiUrl);
   }
 
-  editarCategoria(id: number, categoria: { name: string, description?: string }): Observable<any> {
-  return this.http.put(`${this.apiUrl}/${id}`, categoria);
-}
+  // 🔵 Obtener categoría por ID
+  getCategoriaPorId(id: number): Observable<Categoria> {
+    return this.http.get<Categoria>(`${this.apiUrl}/${id}`);
+  }
 
+  // 🟢 Crear nueva categoría (con FormData si es necesario)
+  crearCategoria(categoria: Categoria | FormData): Observable<Categoria> {
+    return this.http.post<Categoria>(this.apiUrl, categoria);
+  }
+
+  // 🟡 Editar categoría
+  editarCategoria(id: number, categoria: Categoria | FormData): Observable<Categoria> {
+    return this.http.put<Categoria>(`${this.apiUrl}/${id}`, categoria);
+  }
+
+  // 🔴 Eliminar categoría
+  eliminarCategoria(id: number): Observable<{ mensaje: string }> {
+    return this.http.delete<{ mensaje: string }>(`${this.apiUrl}/${id}`);
+  }
+
+  // 📊 Obtener resumen por categoría
+  getResumenCategorias(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/resumen`);
+  }
 }

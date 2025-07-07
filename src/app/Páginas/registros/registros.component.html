@@ -1,61 +1,177 @@
 <div class="container my-5">
-    <h2 class="text-center mb-4">📋 Registro de movimientos</h2>
-  
-    <form>
-      <div class="row g-3">
-        <!-- Tipo de movimiento -->
-        <div class="col-md-6">
-          <label for="movimiento" class="form-label">Movimiento</label>
-          <select class="form-select" id="movimiento" required>
-            <option selected disabled value="">Selecciona tipo de movimiento</option>
-            <option value="entrada">Entrada</option>
-            <option value="salida">Salida</option>
-            <option value="devolucion">Devolución</option>
-          </select>
+
+  <!-- 🔷 Título de la sección -->
+  <h2 class="text-center text-light mb-5">📦 Gestión de productos</h2>
+
+  <!-- 🟢 Formulario de registro de salida -->
+  <div class="bg-dark p-4 rounded border border-primary shadow-lg mb-5">
+    <h4 class="text-light mb-4">📤 Registrar salida</h4>
+
+    <form (ngSubmit)="registrarSalida()" #salidaForm="ngForm">
+      <!-- Producto -->
+      <div class="mb-3">
+        <label for="productoId" class="form-label text-light">Producto</label>
+        <select
+          id="productoId"
+          class="form-select"
+          required
+          name="productoId"
+          [(ngModel)]="salida.productoId"
+          [disabled]="cargando">
+          <option value="" disabled selected>Seleccione un producto</option>
+          <option *ngFor="let prod of productos" [value]="prod.id">{{ prod.name }}</option>
+        </select>
+      </div>
+
+      <!-- Cantidad -->
+      <div class="mb-3">
+        <label for="cantidad" class="form-label text-light">Cantidad</label>
+        <input
+          type="number"
+          class="form-control"
+          id="cantidad"
+          name="cantidad"
+          required
+          min="1"
+          [max]="productoSeleccionado?.quantity || 1"
+          [(ngModel)]="salida.cantidad"
+          [disabled]="!salida.productoId || cargando" />
+        <div class="form-text text-warning">
+          Disponible: {{ productoSeleccionado?.quantity ?? '...' }}
         </div>
-  
-        <!-- Producto -->
-        <div class="col-md-6">
-          <label for="producto" class="form-label">Nombre del producto</label>
-          <input type="text" class="form-control" id="producto" placeholder="Ej. Monitor LED 24''" required>
-        </div>
-  
-        <!-- Cantidad -->
-        <div class="col-md-6">
-          <label for="cantidad" class="form-label">Cantidad</label>
-          <input type="number" class="form-control" id="cantidad" placeholder="Ej. 10" required>
-        </div>
-  
-        <!-- Fecha -->
-        <div class="col-md-6">
-          <label for="fecha" class="form-label">Fecha</label>
-          <input type="date" class="form-control" id="fecha" required>
-        </div>
-  
-        <!-- Hora -->
-        <div class="col-md-6">
-          <label for="hora" class="form-label">Hora</label>
-          <input type="time" class="form-control" id="hora" required>
-        </div>
-  
-        <div class="col-md-12">
-          <label for="nota" class="form-label">Nota opcional</label>
-          <textarea class="form-control" id="nota" rows="3" placeholder="Ej. Observaciones, detalles de devolución, número de factura..."></textarea>
-        </div>
-  
-        <!-- Responsable -->
-        <div class="col-md-12">
-          <label for="responsable" class="form-label">Responsable</label>
-          <input type="text" class="form-control" id="responsable" placeholder="Nombre completo de quien realiza el movimiento" required>
-        </div>
-  
-        <!-- Botón -->
-        <div class="col-12 text-end mt-3">
-          <button type="submit" class="btn btn-success px-4">
-            ✅ Registrar movimiento
-          </button>
-        </div>
+      </div>
+
+      <!-- Fecha -->
+      <div class="mb-3">
+        <label for="fecha" class="form-label text-light">Fecha</label>
+        <input
+          type="date"
+          class="form-control"
+          id="fecha"
+          name="fecha"
+          required
+          [(ngModel)]="salida.fecha" />
+      </div>
+
+      <!-- Hora -->
+      <div class="mb-3">
+        <label for="hora" class="form-label text-light">Hora</label>
+        <input
+          type="time"
+          class="form-control"
+          id="hora"
+          name="hora"
+          required
+          [(ngModel)]="salida.hora" />
+      </div>
+
+      <!-- Nota -->
+      <div class="mb-3">
+        <label for="nota" class="form-label text-light">Nota</label>
+        <textarea
+          class="form-control"
+          id="nota"
+          name="nota"
+          rows="2"
+          [(ngModel)]="salida.nota"
+          placeholder="Escribe una observación si es necesario..."></textarea>
+      </div>
+
+      <!-- Responsable -->
+      <div class="mb-3">
+        <label for="responsable" class="form-label text-light">Responsable</label>
+        <input
+          type="text"
+          class="form-control"
+          id="responsable"
+          name="responsable"
+          required
+          [(ngModel)]="salida.responsable"
+          placeholder="Nombre del responsable" />
+      </div>
+
+      <!-- Botón -->
+      <div class="text-end">
+        <button
+          type="submit"
+          class="btn btn-outline-success"
+          [disabled]="!salidaForm.form.valid || cargando">
+          Registrar salida
+        </button>
       </div>
     </form>
   </div>
-  
+
+  <!-- 🔷 Formulario para agregar producto -->
+<div class="bg-dark p-4 rounded border border-info shadow">
+  <h4 class="text-light mb-4">➕ Agregar nuevo producto</h4>
+
+  <form (ngSubmit)="crearProducto()" #productoForm="ngForm">
+    <!-- Nombre -->
+    <div class="mb-3">
+      <label for="nombre" class="form-label text-light">Nombre del producto</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nombre"
+        name="nombre"
+        required
+        [(ngModel)]="nuevoProducto.name" />
+    </div>
+
+    <!-- Cantidad -->
+    <div class="mb-3">
+      <label for="cantidadNuevo" class="form-label text-light">Cantidad inicial</label>
+      <input
+        type="number"
+        class="form-control"
+        id="cantidadNuevo"
+        name="cantidad"
+        required
+        min="1"
+        [(ngModel)]="nuevoProducto.quantity" />
+    </div>
+
+    <!-- Categoría -->
+<div class="mb-3">
+  <label for="categoria" class="form-label text-light">Categoría</label>
+  <select
+    class="form-select"
+    id="categoria"
+    name="categoria"
+    required
+    [(ngModel)]="nuevoProducto.category_id">
+    <option value="" disabled selected>Seleccione una categoría</option>
+    <option *ngFor="let cat of categorias" [value]="cat.id">{{ cat.name }}</option>
+  </select>
+</div>
+
+
+    <!-- Imagen -->
+    <div class="mb-3">
+      <label for="imagen" class="form-label text-light">URL de imagen (opcional)</label>
+      <input
+        type="text"
+        class="form-control"
+        id="imagen"
+        name="imagen"
+        [(ngModel)]="nuevoProducto.imageUrl" />
+    </div>
+
+    <!-- Botón -->
+    <div class="text-end">
+      <button
+        type="submit"
+        class="btn btn-outline-info"
+        [disabled]="!productoForm.form.valid">
+        Agregar producto
+      </button>
+    </div>
+  </form>
+</div>
+
+  <!-- 🔔 Toast -->
+  <div class="toast-notificacion mt-4" *ngIf="mostrarToast">
+    {{ mensajeToast }}
+  </div>
+</div>

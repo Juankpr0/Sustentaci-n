@@ -4,20 +4,53 @@
       <div class="row justify-content-center">
         <div class="col-md-6">
           <div id="login-form" class="card chart-card p-4">
-            <h2 class="text-center mb-4">Iniciar sesión</h2>
+            <h2 class="text-center mb-4 text-white">Iniciar sesión</h2>
+
             <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+              <!-- Campo correo -->
               <div class="mb-3">
                 <label class="form-label text-white text-uppercase">Correo electrónico</label>
-                <input type="email" class="form-control bg-dark text-white" required [(ngModel)]="email" name="email">
+                <input
+                  type="email"
+                  class="form-control bg-dark text-white"
+                  required
+                  [(ngModel)]="email"
+                  name="email"
+                />
               </div>
+
+              <!-- Campo contraseña -->
               <div class="mb-3">
                 <label class="form-label text-white text-uppercase">Contraseña</label>
-                <input type="password" class="form-control bg-dark text-white" required [(ngModel)]="password" name="password">
+                <input
+                  type="password"
+                  class="form-control bg-dark text-white"
+                  required
+                  [(ngModel)]="password"
+                  name="password"
+                />
               </div>
-              <button type="submit" class="btn btn-custom w-100 mt-2">Ingresar</button>
+
+              <!-- Botón de login -->
+              <button type="submit" class="btn btn-custom w-100 mt-2">
+                Ingresar
+              </button>
+
+              <!-- Alerta de credenciales inválidas -->
+              <div
+                *ngIf="mensajeError"
+                class="alert alert-danger mt-3 text-center"
+              >
+                {{ mensajeError }}
+              </div>
             </form>
+
+            <!-- Enlace a registro -->
             <div class="text-center mt-3">
-              <small class="text-white">¿No tienes cuenta? <a routerLink="/registro" class="text-info">Regístrate aquí</a></small>
+              <small class="text-white">
+                ¿No tienes cuenta?
+                <a routerLink="/registro" class="text-info">Regístrate aquí</a>
+              </small>
             </div>
           </div>
         </div>
