@@ -28,7 +28,7 @@ export class ProductsComponent implements OnInit {
   categoriaFiltro = '';
 
   currentPage = 1;
-  readonly itemsPerPage = 8;
+  readonly itemsPerPage = 9;
 
   mostrarFormulario = false;
 

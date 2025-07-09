@@ -1,16 +1,15 @@
-/* CONTENEDOR GENERAL */
 .container {
   max-width: 720px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-/* FONDO OSCURO PRINCIPAL */
+
 .bg-dark {
   background-color: #121214 !important;
 }
 
-/* TÍTULOS */
+
 h2.text-center {
   color: #e0e0e0;
   text-transform: uppercase;
@@ -27,7 +26,7 @@ h6 {
   font-size: 0.9rem;
 }
 
-/* FORMULARIOS */
+
 form {
   padding: 2rem;
   border-radius: 12px;
@@ -45,7 +44,7 @@ form:hover {
     inset 0 0 12px rgba(142, 68, 173, 0.3);
 }
 
-/* ETIQUETAS */
+
 .form-label {
   font-weight: 600;
   color: #c8c8c8;
@@ -56,7 +55,7 @@ form:hover {
   display: block;
 }
 
-/* INPUTS Y SELECTS */
+
 .form-control,
 .form-select {
   background-color: #1f1f23;
@@ -86,14 +85,14 @@ option {
   color: #eee;
 }
 
-/* TEXTO DE AYUDA */
+
 .form-text {
   font-size: 0.85rem;
   color: #f39c12;
   margin-top: 0.25rem;
 }
 
-/* BOTÓN SUBMIT Y PRINCIPAL */
+
 button[type="submit"],
 .btn-primary,
 .btn-outline-info {
@@ -123,7 +122,7 @@ button[type="submit"]:disabled {
   box-shadow: none;
 }
 
-/* CONTENEDORES CLICKEABLES */
+
 .card-option,
 .resumen-card {
   cursor: pointer;
@@ -136,7 +135,7 @@ button[type="submit"]:disabled {
   box-shadow: 0 0 15px rgba(108, 99, 255, 0.4);
 }
 
-/* NOTIFICACIÓN VERDE */
+
 .toast-notificacion {
   position: fixed;
   bottom: 1.5rem;
@@ -154,13 +153,12 @@ button[type="submit"]:disabled {
   max-width: 320px;
 }
 
-/* NOTIFICACIÓN DE ERROR */
+
 .toast-error {
   background-color: #c0392b;
   box-shadow: 0 0 15px rgba(192, 57, 43, 0.6);
 }
 
-/* ANIMACIÓN DE TOAST */
 @keyframes slideFade {
   from {
     opacity: 0;
@@ -172,13 +170,12 @@ button[type="submit"]:disabled {
   }
 }
 
-/* BOTONES ALINEADOS A LA DERECHA */
+
 .text-end {
   text-align: right;
   margin-top: 1rem;
 }
 
-/* PAGINACIÓN */
 .paginacion {
   text-align: center;
   margin-top: 2rem;
@@ -201,8 +198,6 @@ button[type="submit"]:disabled {
   background-color: #6c63ff;
   color: #fff;
 }
-
-/* RESPONSIVE */
 @media (max-width: 576px) {
   .container {
     max-width: 100%;

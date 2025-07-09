@@ -1,4 +1,3 @@
-/* Estilo general para tarjetas */
 .card.chart-card {
   background-color: #212529;
   color: white;
@@ -12,7 +11,6 @@
   transform: translateY(-4px);
 }
 
-/* Título dentro de la tarjeta */
 .card.chart-card h2,
 .card.chart-card h3 {
   font-size: 1.5rem;
@@ -22,7 +20,6 @@
   text-align: center;
 }
 
-/* Estilo para campos de entrada */
 input.form-control {
   border: none;
   background-color: #1a1d20;
@@ -38,7 +35,6 @@ input.form-control:focus {
   box-shadow: 0 0 0 2px cyan;
 }
 
-/* Botón personalizado */
 .btn-custom {
   background-color: purple;
   color: white;
@@ -54,14 +50,12 @@ input.form-control:focus {
   box-shadow: 0 6px 14px purple;
 }
 
-/* Botón general */
 .btn {
   text-transform: uppercase;
   font-weight: bold;
   box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
 }
 
-/* Botón con borde claro */
 .btn-outline-light {
   border: 2px solid white;
   color: white;
@@ -75,7 +69,6 @@ input.form-control:focus {
   color: #212529;
 }
 
-/* Estilo para alertas */
 .alert {
   font-weight: bold;
   border-radius: 6px;
@@ -87,7 +80,6 @@ input.form-control:focus {
   border: none;
 }
 
-/* Fondo principal */
 main {
   background-color: #212529;
   min-height: 100vh;
@@ -96,7 +88,6 @@ main {
   justify-content: center;
 }
 
-/* Estilo para sección de bienvenida */
 .welcome-box {
   background-color: #1a1d20;
   border-radius: 15px;
@@ -107,7 +98,6 @@ main {
   text-align: center;
 }
 
-/* Encabezados generales */
 h1 {
   font-size: 2.5rem;
   color: white;
@@ -118,7 +108,6 @@ h2 {
   text-transform: uppercase;
 }
 
-/* Lista con bordes separados */
 .list-group-item {
   border: none;
   border-bottom: 1px solid #444;
@@ -128,7 +117,6 @@ h2 {
   border-bottom: none;
 }
 
-/* Lista con scroll */
 .product-list.scroll-container {
   max-height: 600px;
   overflow-y: auto;
@@ -138,7 +126,6 @@ h2 {
   background-color: #1a1d20;
 }
 
-/* Tarjetas con efecto al pasar el mouse */
 .card-option {
   background-color: #212529;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
@@ -150,7 +137,6 @@ h2 {
   box-shadow: 0 8px 16px purple;
 }
 
-/* Botón verde si llegas a usarlo */
 .btn-success {
   background-color: white;
   color: #212529;

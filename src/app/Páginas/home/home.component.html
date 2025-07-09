@@ -1,14 +1,11 @@
 <div class="container my-5">
-
-  <!-- Bienvenida -->
   <div class="text-center mb-5">
-    <h2 class="text-light">📊 Bienvenido a tu panel de inventario</h2>
+    <h2 class="text-light">📊 BIENVENIDO A TU PANEL DE INVENTARIO</h2>
     <p class="text-secondary">
       Visualiza estadísticas clave, accede a productos y gestiona tus categorías.
     </p>
   </div>
 
-  <!-- Categorías -->
   <div class="row g-4 justify-content-center mb-5">
     <div 
       class="col-12 col-sm-6 col-md-4 col-lg-3" 
@@ -22,7 +19,7 @@
           (error)="reemplazarImagenPorDefecto(categoria)"
         />
         <div class="card-body">
-          <h5 class="card-title">{{ categoria.name }}</h5>
+          <h5 class="card-title text-uppercase">{{ categoria.name }}</h5>
           <p class="card-text small">
             {{ categoria.description || 'Sin descripción' }}
           </p>
@@ -30,14 +27,13 @@
             [routerLink]="['/productos/categoria', categoria.id]" 
             class="btn btn-outline-light btn-sm mt-2"
           >
-            Ver productos
+            VER PRODUCTOS
           </a>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Paginación -->
   <div class="text-center mt-4" *ngIf="totalPaginas() > 1">
     <button
       *ngFor="let pagina of obtenerPaginas()"
@@ -50,48 +46,40 @@
   </div>
 
   <div class="row g-4 text-center mb-5">
+    <div class="col-6 col-md-4">
+      <div 
+        class="bg-dark border border-success rounded p-3 shadow-sm"
+        style="cursor: pointer;"
+        [routerLink]="['/stock']"
+      >
+        <h6 class="text-secondary mb-1">📁 TOTAL CATEGORÍAS</h6>
+        <h3 class="text-light">{{ categorias.length || 0 }}</h3>
+      </div>
+    </div>
 
-  <!-- Total Categorías (clickeable) -->
-  <div class="col-6 col-md-4">
-    <div 
-      class="bg-dark border border-success rounded p-3 shadow-sm"
-      style="cursor: pointer;"
-      [routerLink]="['/stock']"
-    >
-      <h6 class="text-secondary mb-1">📁 Total Categorías</h6>
-      <h3 class="text-light">{{ categorias.length || 0 }}</h3>
+    <div class="col-6 col-md-4">
+      <div 
+        class="bg-dark border border-info rounded p-3 shadow-sm"
+        style="cursor: pointer;"
+        [routerLink]="['/productos']"
+      >
+        <h6 class="text-secondary mb-1">🛒 TOTAL PRODUCTOS</h6>
+        <h3 class="text-light">{{ totalProductos || 0 }}</h3>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <div class="bg-dark border border-warning rounded p-3 shadow-sm">
+        <h6 class="text-secondary mb-1">📅 ÚLTIMA ACTUALIZACIÓN</h6>
+        <h3 class="text-light">{{ resumen[0]?.ultima_actualizacion || 'N/A' }}</h3>
+      </div>
     </div>
   </div>
 
-  <!-- Total Productos (clickeable) -->
-  <div class="col-6 col-md-4">
-    <div 
-      class="bg-dark border border-info rounded p-3 shadow-sm"
-      style="cursor: pointer;"
-      [routerLink]="['/productos']"
-    >
-      <h6 class="text-secondary mb-1">🛒 Total Productos</h6>
-      <h3 class="text-light">{{ totalProductos || 0 }}</h3>
-    </div>
-  </div>
-
-  <!-- Última actualización (no clickeable) -->
-  <div class="col-12 col-md-4">
-    <div class="bg-dark border border-warning rounded p-3 shadow-sm">
-      <h6 class="text-secondary mb-1">📅 Última actualización</h6>
-      <h3 class="text-light">{{ resumen[0]?.ultima_actualizacion || 'N/A' }}</h3>
-    </div>
-  </div>
-
-</div>
-
-
-  <!-- Gráficas -->
   <div class="row justify-content-center mt-4 g-4">
-    <!-- Más vendidos -->
     <div class="col-12 col-md-6">
       <div class="chart-card bg-dark border border-success text-white">
-        <h5 class="mb-3">📈 Productos más vendidos</h5>
+        <h5 class="mb-3">📈 PRODUCTOS MÁS VENDIDOS</h5>
         <div *ngIf="masVendidos.length; else sinMasVendidos">
           <div *ngFor="let p of masVendidos" class="mb-3">
             <div class="d-flex justify-content-between">
@@ -116,10 +104,9 @@
       </div>
     </div>
 
-    <!-- Menos vendidos -->
     <div class="col-12 col-md-6">
       <div class="chart-card bg-dark border border-danger text-white">
-        <h5 class="mb-3">📉 Productos menos vendidos</h5>
+        <h5 class="mb-3">📉 PRODUCTOS MENOS VENDIDOS</h5>
         <div *ngIf="menosVendidos.length; else sinMenosVendidos">
           <div *ngFor="let p of menosVendidos" class="mb-3">
             <div class="d-flex justify-content-between">
@@ -145,9 +132,8 @@
     </div>
   </div>
 
-  <!-- 🔔 Alerta de categorías con stock bajo -->
   <div *ngIf="alertasStockBajo?.length" class="alert alert-danger mt-5">
-    <h5 class="text-white">⚠ Categorías con stock bajo:</h5>
+    <h5 class="text-white">⚠ CATEGORÍAS CON STOCK BAJO:</h5>
     <ul class="mb-0">
       <li *ngFor="let cat of alertasStockBajo">
         {{ cat.categoria }}: {{ cat.stock_total }} / mínimo {{ cat.stock_minimo }}

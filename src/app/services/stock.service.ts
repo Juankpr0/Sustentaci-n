@@ -67,29 +67,22 @@ export class StockService {
     return this.http.get<any[]>(`${this.stockUrl}/resumen/productos-mas-vendidos`);
   }
 
-  // Productos menos vendidos
   getProductosMenosVendidos(): Observable<any[]> {
     return this.http.get<any[]>(`${this.stockUrl}/resumen/productos-menos-vendidos`);
   }
 
-  // 📦 PRODUCTOS
-
-  // Obtener todos los productos
   getProductos(): Observable<any> {
     return this.http.get(`${this.stockUrl}/productos`);
   }
 
-  // Obtener productos por categoría
   getProductosPorCategoria(categoriaId: number): Observable<any> {
     return this.http.get(`${this.stockUrl}/productos/categoria/${categoriaId}`);
   }
 
-  // Actualizar producto
   actualizarProducto(id: number, producto: any): Observable<any> {
     return this.http.put(`${this.productUrl}/${id}`, producto);
   }
 
-  // Eliminar producto
   eliminarProducto(id: number): Observable<any> {
     return this.http.delete(`${this.productUrl}/${id}`);
   }

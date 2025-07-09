@@ -18,17 +18,15 @@ export class AlertasService {
 
   constructor(private http: HttpClient) {}
 
-  /** Obtiene todas las notificaciones */
   getNotificaciones(): Observable<Notificacion[]> {
     return this.http.get<Notificacion[]>(this.apiUrl);
   }
 
-  /** Registra una nueva notificación */
   registrarNotificacion(
     mensaje: string,
     tipo: 'info' | 'success' | 'warning' | 'error' = 'info'
   ): Observable<Notificacion> {
-    const payload = { mensaje, tipo };
-    return this.http.post<Notificacion>(this.apiUrl, payload);
+    return this.http.post<Notificacion>(this.apiUrl, { mensaje, tipo });
   }
 }
+

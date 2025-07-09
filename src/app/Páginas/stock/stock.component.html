@@ -1,9 +1,8 @@
 <div class="container my-5">
   <h2 class="mb-4 text-center text-light">📦 Stock General</h2>
 
-  <!-- FORMULARIO -->
   <form class="row g-3 mb-4" (ngSubmit)="editandoCategoria ? actualizarCategoria() : agregarCategoria()">
-    <!-- Nombre -->
+  
     <div class="col-md-3">
       <input
         type="text"
@@ -15,7 +14,6 @@
       />
     </div>
 
-    <!-- Imagen -->
 <div class="col-md-4">
   <input
     type="file"
@@ -25,8 +23,6 @@
   />
 </div>
 
-
-    <!-- Descripción -->
     <div class="col-md-3">
       <input
         type="text"
@@ -38,7 +34,6 @@
       />
     </div>
 
-    <!-- Botones -->
     <div class="col-md-2 d-flex gap-2">
       <button type="submit" class="btn btn-success w-100">
         {{ editandoCategoria ? 'Actualizar' : 'Agregar' }} categoría
@@ -49,7 +44,6 @@
     </div>
   </form>
 
-  <!-- VISTA PREVIA -->
 <div *ngIf="imagenPreview" class="mb-3 text-center">
   <img
     [src]="imagenPreview"
@@ -60,7 +54,6 @@
 </div>
 
 
-  <!-- MENSAJES -->
   <div *ngIf="mensajeExitoCategoria" class="alert alert-success text-center py-2">
     {{ mensajeExitoCategoria }}
   </div>
@@ -68,7 +61,6 @@
     {{ mensajeErrorCategoria }}
   </div>
 
-  <!-- TARJETAS DE CATEGORÍAS -->
   <div class="row g-4 justify-content-center">
     <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let item of resumenPaginado()">
       <div class="p-3 rounded bg-dark text-center shadow-lg border border-purple card-option h-100 d-flex flex-column justify-content-between">
@@ -94,7 +86,6 @@
     </div>
   </div>
 
-  <!-- PAGINACIÓN -->
   <div class="pagination-controls d-flex justify-content-center align-items-center gap-3 mt-4">
     <button class="btn btn-outline-light btn-sm" (click)="cambiarPagina(-1)" [disabled]="paginaActual === 1">
       ⬅ Anterior
@@ -105,7 +96,6 @@
     </button>
   </div>
 
-  <!-- TABLA DE RESUMEN -->
   <div class="mt-5">
     <h4 class="text-center text-light mb-3">📊 Resumen general</h4>
     <div class="table-responsive">

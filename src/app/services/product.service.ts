@@ -42,42 +42,34 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  // 🔄 Obtener todos los productos
   getAll(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl);
   }
 
-  // ➕ Crear un nuevo producto
   create(product: Product): Observable<Product> {
     return this.http.post<Product>(this.apiUrl, product);
   }
 
-  // ✏️ Actualizar producto por ID
   update(id: number, product: Product): Observable<void> {
     return this.http.put<void>(`${this.apiUrl}/${id}`, product);
   }
 
-  // ❌ Eliminar un producto
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  // 📤 Registrar una salida de producto
   registrarSalida(salida: Salida): Observable<any> {
     return this.http.post<any>(this.salidasUrl, salida);
   }
 
-  // 📋 Obtener todas las salidas registradas
   getSalidas(): Observable<Salida[]> {
     return this.http.get<Salida[]>(this.salidasUrl);
   }
 
-  // 🔔 Registrar una notificación
   registrarNotificacion(mensaje: string, tipo: Notificacion['tipo'] = 'info'): Observable<any> {
     return this.http.post<any>(this.notificacionesUrl, { mensaje, tipo });
   }
 
-  // 📚 Obtener categorías
   getCategorias(): Observable<Categoria[]> {
     return this.http.get<Categoria[]>(this.categoriasUrl);
   }
